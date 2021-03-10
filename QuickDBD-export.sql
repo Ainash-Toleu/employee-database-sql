@@ -11,6 +11,8 @@ CREATE TABLE "Departments" (
      )
 );
 
+select * from "Departments";
+
 CREATE TABLE "Employees" (
     "Employee_No" int   NOT NULL,
     "Employee_Title_ID" varchar   NOT NULL,
@@ -24,21 +26,27 @@ CREATE TABLE "Employees" (
      )
 );
 
+select * from "Employees";
+
 CREATE TABLE "Department_Emlpoyees" (
-    "Department_No" varchar   NOT NULL,
     "Employee_No" int   NOT NULL,
+    "Department_No" varchar   NOT NULL,
     CONSTRAINT "pk_Department_Emlpoyees" PRIMARY KEY (
-        "Department_No"
+        "Employee_No","Department_No"
      )
 );
+
+select * from "Department_Emlpoyees";
 
 CREATE TABLE "Department_Managers" (
     "Department_No" varchar   NOT NULL,
     "Emlpoyee_No" int   NOT NULL,
     CONSTRAINT "pk_Department_Managers" PRIMARY KEY (
-        "Department_No"
+        "Department_No","Emlpoyee_No"
      )
 );
+
+select * from "Department_Managers";
 
 CREATE TABLE "Salaries" (
     "Emlpoyee_No" int   NOT NULL,
@@ -48,6 +56,8 @@ CREATE TABLE "Salaries" (
      )
 );
 
+select * from "Salaries";
+
 CREATE TABLE "Titles" (
     "Title_ID" varchar   NOT NULL,
     "Title" varchar   NOT NULL,
@@ -56,8 +66,7 @@ CREATE TABLE "Titles" (
      )
 );
 
-ALTER TABLE "Departments" ADD CONSTRAINT "fk_Departments_Department_No" FOREIGN KEY("Department_No")
-REFERENCES "Department_Emlpoyees" ("Department_No");
+select * from "Titles";
 
 ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_Employee_No" FOREIGN KEY("Employee_No")
 REFERENCES "Salaries" ("Emlpoyee_No");
@@ -67,6 +76,9 @@ REFERENCES "Titles" ("Title_ID");
 
 ALTER TABLE "Department_Emlpoyees" ADD CONSTRAINT "fk_Department_Emlpoyees_Employee_No" FOREIGN KEY("Employee_No")
 REFERENCES "Employees" ("Employee_No");
+
+ALTER TABLE "Department_Emlpoyees" ADD CONSTRAINT "fk_Department_Emlpoyees_Department_No" FOREIGN KEY("Department_No")
+REFERENCES "Departments" ("Department_No");
 
 ALTER TABLE "Department_Managers" ADD CONSTRAINT "fk_Department_Managers_Department_No" FOREIGN KEY("Department_No")
 REFERENCES "Departments" ("Department_No");
