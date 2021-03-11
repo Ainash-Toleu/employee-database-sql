@@ -86,3 +86,10 @@ REFERENCES "Departments" ("Department_No");
 ALTER TABLE "Department_Managers" ADD CONSTRAINT "fk_Department_Managers_Emlpoyee_No" FOREIGN KEY("Emlpoyee_No")
 REFERENCES "Employees" ("Employee_No");
 
+select "Employees"."Employee_No", "Employees"."Last_name", "Employees"."First_Name", "Employees"."Sex", "Salaries"."Salary"
+from "Employees"
+inner join "Salaries" on "Employees"."Employee_No" = "Salaries"."Emlpoyee_No";
+
+select  "First_Name", "Last_name", "Hire_Date"
+from "Employees"
+where extract(year from "Hire_Date") = 1986;
