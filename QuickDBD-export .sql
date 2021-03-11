@@ -11,14 +11,14 @@ CREATE TABLE "Departments" (
      )
 );
 
-select * from "Departments";
+SELECT * FROM "Departments";
 
 CREATE TABLE "Employees" (
     "Employee_No" int   NOT NULL,
     "Employee_Title_ID" varchar   NOT NULL,
     "Birth_Date" date   NOT NULL,
     "First_Name" varchar   NOT NULL,
-    "Last_name" varchar   NOT NULL,
+    "Last_Name" varchar   NOT NULL,
     "Sex" varchar   NOT NULL,
     "Hire_Date" date   NOT NULL,
     CONSTRAINT "pk_Employees" PRIMARY KEY (
@@ -26,7 +26,7 @@ CREATE TABLE "Employees" (
      )
 );
 
-select * from "Employees";
+SELECT * FROM "Employees";
 
 CREATE TABLE "Department_Emlpoyees" (
     "Employee_No" int   NOT NULL,
@@ -36,27 +36,27 @@ CREATE TABLE "Department_Emlpoyees" (
      )
 );
 
-select * from "Department_Emlpoyees";
+SELECT * FROM "Department_Emlpoyees";
 
 CREATE TABLE "Department_Managers" (
     "Department_No" varchar   NOT NULL,
-    "Emlpoyee_No" int   NOT NULL,
+    "Employee_No" int   NOT NULL,
     CONSTRAINT "pk_Department_Managers" PRIMARY KEY (
-        "Department_No","Emlpoyee_No"
+        "Department_No","Employee_No"
      )
 );
 
-select * from "Department_Managers";
+SELECT * FROM "Department_Managers";
 
 CREATE TABLE "Salaries" (
-    "Emlpoyee_No" int   NOT NULL,
+    "Employee_No" int   NOT NULL,
     "Salary" int   NOT NULL,
     CONSTRAINT "pk_Salaries" PRIMARY KEY (
-        "Emlpoyee_No"
+        "Employee_No"
      )
 );
 
-select * from "Salaries";
+SELECT * FROM "Salaries";
 
 CREATE TABLE "Titles" (
     "Title_ID" varchar   NOT NULL,
@@ -66,10 +66,10 @@ CREATE TABLE "Titles" (
      )
 );
 
-select * from "Titles";
+SELECT * FROM "Titles";
 
 ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_Employee_No" FOREIGN KEY("Employee_No")
-REFERENCES "Salaries" ("Emlpoyee_No");
+REFERENCES "Salaries" ("Employee_No");
 
 ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_Employee_Title_ID" FOREIGN KEY("Employee_Title_ID")
 REFERENCES "Titles" ("Title_ID");
@@ -83,13 +83,13 @@ REFERENCES "Departments" ("Department_No");
 ALTER TABLE "Department_Managers" ADD CONSTRAINT "fk_Department_Managers_Department_No" FOREIGN KEY("Department_No")
 REFERENCES "Departments" ("Department_No");
 
-ALTER TABLE "Department_Managers" ADD CONSTRAINT "fk_Department_Managers_Emlpoyee_No" FOREIGN KEY("Emlpoyee_No")
+ALTER TABLE "Department_Managers" ADD CONSTRAINT "fk_Department_Managers_Employee_No" FOREIGN KEY("Employee_No")
 REFERENCES "Employees" ("Employee_No");
 
-select "Employees"."Employee_No", "Employees"."Last_name", "Employees"."First_Name", "Employees"."Sex", "Salaries"."Salary"
-from "Employees"
-inner join "Salaries" on "Employees"."Employee_No" = "Salaries"."Emlpoyee_No";
+SELECT "Employees"."Employee_No", "Employees"."Last_Name", "Employees"."First_Name", "Employees"."Sex", "Salaries"."Salary"
+FROM "Employees"
+INNER JOIN "Salaries" ON "Employees"."Employee_No" = "Salaries"."Employee_No";
 
-select  "First_Name", "Last_name", "Hire_Date"
-from "Employees"
-where extract(year from "Hire_Date") = 1986;
+SELECT  "First_Name", "Last_Name", "Hire_Date"
+FROM "Employees"
+WHERE EXTRACT(YEAR FROM "Hire_Date") = 1986;
