@@ -93,3 +93,11 @@ INNER JOIN "Salaries" ON "Employees"."Employee_No" = "Salaries"."Employee_No";
 SELECT  "First_Name", "Last_Name", "Hire_Date"
 FROM "Employees"
 WHERE EXTRACT(YEAR FROM "Hire_Date") = 1986;
+
+SELECT "Departments"."Department_No", "Departments"."Department_Name", "Department_Managers"."Employee_No", "Employees"."Last_Name", "Employees"."First_Name"
+FROM "Employees"
+INNER JOIN "Department_Managers" ON "Employees"."Employee_No" = "Department_Managers"."Employee_No"
+INNER JOIN "Departments" ON "Department_Managers"."Department_No" = "Departments"."Department_No";
+
+
+
