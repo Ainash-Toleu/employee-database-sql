@@ -104,5 +104,7 @@ FROM "Employees"
 INNER JOIN "Department_Emlpoyees" ON "Employees"."Employee_No" = "Department_Emlpoyees"."Employee_No"
 INNER JOIN "Departments" ON "Department_Emlpoyees"."Department_No" = "Departments"."Department_No";
 
-
+SELECT  "First_Name", "Last_Name", "Sex"
+FROM "Employees"
+WHERE "First_Name" = 'Hercules'  and "Last_Name" like 'B%';
 
