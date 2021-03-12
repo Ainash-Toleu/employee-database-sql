@@ -119,3 +119,9 @@ FROM "Employees"
 INNER JOIN "Department_Emlpoyees" ON "Employees"."Employee_No" = "Department_Emlpoyees"."Employee_No"
 INNER JOIN "Departments" ON "Department_Emlpoyees"."Department_No" = "Departments"."Department_No"
 WHERE "Department_Name" IN ('Sales','Development');
+
+SELECT "Last_Name", COUNT("Employee_No")
+FROM "Employees"
+GROUP BY "Last_Name"
+HAVING COUNT("Employee_No") > 1
+ORDER BY COUNT("Employee_No") DESC;
