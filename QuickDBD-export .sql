@@ -108,3 +108,8 @@ SELECT  "First_Name", "Last_Name", "Sex"
 FROM "Employees"
 WHERE "First_Name" = 'Hercules'  and "Last_Name" like 'B%';
 
+SELECT "Department_Emlpoyees"."Employee_No", "Employees"."Last_Name", "Employees"."First_Name", "Departments"."Department_Name"
+FROM "Employees"
+INNER JOIN "Department_Emlpoyees" ON "Employees"."Employee_No" = "Department_Emlpoyees"."Employee_No"
+INNER JOIN "Departments" ON "Department_Emlpoyees"."Department_No" = "Departments"."Department_No"
+WHERE "Department_Name" = 'Sales';
