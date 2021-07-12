@@ -12,7 +12,7 @@ CREATE TABLE "Departments" (
 );
 
 --Selects all from table
-SELECT * FROM "Departments";
+-- SELECT * FROM "Departments";
 
 --Creates table
 CREATE TABLE "Employees" (
@@ -29,7 +29,7 @@ CREATE TABLE "Employees" (
 );
 
 --Selects all from table
-SELECT * FROM "Employees";
+-- SELECT * FROM "Employees";
 
 --Creates table
 CREATE TABLE "Department_Emlpoyees" (
@@ -41,7 +41,7 @@ CREATE TABLE "Department_Emlpoyees" (
 );
 
 --Selects all from table
-SELECT * FROM "Department_Emlpoyees";
+-- SELECT * FROM "Department_Emlpoyees";
 
 --Creates table
 CREATE TABLE "Department_Managers" (
@@ -53,7 +53,7 @@ CREATE TABLE "Department_Managers" (
 );
 
 --Selects all from table
-SELECT * FROM "Department_Managers";
+-- SELECT * FROM "Department_Managers";
 
 --Creates table
 CREATE TABLE "Salaries" (
@@ -65,7 +65,7 @@ CREATE TABLE "Salaries" (
 );
 
 --Selects all from table
-SELECT * FROM "Salaries";
+-- SELECT * FROM "Salaries";
 
 --Creates table
 CREATE TABLE "Titles" (
@@ -77,7 +77,7 @@ CREATE TABLE "Titles" (
 );
 
 --Selects all from table
-SELECT * FROM "Titles";
+-- SELECT * FROM "Titles";
 
 --Adds foreign keys to tables
 ALTER TABLE "Employees" ADD CONSTRAINT "fk_Employees_Employee_No" FOREIGN KEY("Employee_No")
